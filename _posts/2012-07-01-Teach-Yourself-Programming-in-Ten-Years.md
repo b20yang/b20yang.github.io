@@ -1,5 +1,7 @@
+---
 layout: post
 title: 十年学会程序设计
+---
 
 _翻译：杨彪 原作者：Peter Norvig 原文链接：<a href="http://norvig.com/21-days.html">Teach Yourself Programming in Ten Years</a>_
 
