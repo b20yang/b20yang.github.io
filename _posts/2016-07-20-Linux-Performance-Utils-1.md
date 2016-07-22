@@ -9,14 +9,15 @@ title: Linux系统性能剖析工具（一）
 
 对于每个命令，我会先贴上在我的机器上执行的输出，然后加以注释，如果有需要的话也会举例加以说明。就此开始吧：  
 
-###uptime  
+### uptime  
 
 	b20yang@ubuntu$ uptime   
 	23:49:23 up 79 days,  5:13,  2 users,  load average: 0.00, 0.01, 0.05  
 
 最后三个数字分别表示过去1分钟，5分钟，15分钟系统的负载，可以依此判断系统负载最近的变化趋势。  
 
-###top/htop  
+### top/htop  
+
 	b20yang@ubuntu$ top
 	%Cpu(s):  0.2 us,  0.3 sy,  0.0 ni, 99.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
 	KiB Mem:   3880708 total,  3711540 used,   169168 free,  1347968 buffers
@@ -29,7 +30,8 @@ title: Linux系统性能剖析工具（一）
 
 相比uptime，top会显示更多的信息，包括进程级别CPU LOAD、交换分区和物理内存的使用率等。可以通过top找到哪些进程占用了比较多的系统资源。那么如果通过top找到了cpu load很高的进程之后，那接下来应该怎么办呢？接下来就应该去分析这个进程的code execution path，找出为什么用了这么多的资源。 htop是top的高级版本。  
 
-###mpstat  
+### mpstat  
+
 	b20yang@ubuntu$ mpstat -P ALL 1
 	02:24:11 PM  CPU   %user   %nice    %sys %iowait    %irq   %soft  %steal   %idle    intr/s
 	02:24:12 PM  all    0.00    0.00    0.07    0.00    0.00    0.00    0.00   99.93    618.00
