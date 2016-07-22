@@ -14,9 +14,9 @@ title: Linux系统性能剖析工具（一）
 	b20yang@ubuntu$ uptime   
 	23:49:23 up 79 days,  5:13,  2 users,  load average: 0.00, 0.01, 0.05  
 
-最后三个数字分别表示过去1分钟，5分钟，15分钟系统的负载，可以依此判断系统负载最近的变化趋势。
+最后三个数字分别表示过去1分钟，5分钟，15分钟系统的负载，可以依此判断系统负载最近的变化趋势。  
 
-###top/htop
+###top/htop  
 	b20yang@ubuntu$ top
 	%Cpu(s):  0.2 us,  0.3 sy,  0.0 ni, 99.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
 	KiB Mem:   3880708 total,  3711540 used,   169168 free,  1347968 buffers
@@ -26,9 +26,10 @@ title: Linux系统性能剖析工具（一）
 	 1839 b20yang   20   0 1690320 236636  17060 S   0.7  6.1 453:30.65 compiz
 	    1 root      20   0  117196   4452   3148 S   0.0  0.1   1:30.42 systemd
 	    2 root      20   0       0      0      0 S   0.0  0.0   0:00.52 kthreadd
-相比uptime，top会显示更多的信息，包括进程级别CPU LOAD、交换分区和物理内存的使用率等。可以通过top找到哪些进程占用了比较多的系统资源。那么如果通过top找到了cpu load很高的进程之后，那接下来应该怎么办呢？接下来就应该去分析这个进程的code execution path，找出为什么用了这么多的资源。 htop是top的高级版本。
 
-###mpstat
+相比uptime，top会显示更多的信息，包括进程级别CPU LOAD、交换分区和物理内存的使用率等。可以通过top找到哪些进程占用了比较多的系统资源。那么如果通过top找到了cpu load很高的进程之后，那接下来应该怎么办呢？接下来就应该去分析这个进程的code execution path，找出为什么用了这么多的资源。 htop是top的高级版本。  
+
+###mpstat  
 	b20yang@ubuntu$ mpstat -P ALL 1
 	02:24:11 PM  CPU   %user   %nice    %sys %iowait    %irq   %soft  %steal   %idle    intr/s
 	02:24:12 PM  all    0.00    0.00    0.07    0.00    0.00    0.00    0.00   99.93    618.00
@@ -58,7 +59,7 @@ title: Linux系统性能剖析工具（一）
 	02:24:12 PM   23    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00      0.00
 
 
-用这个命令可以很方便的看到CPU各个核心之间负载是否均衡。
+用这个命令可以很方便的看到CPU各个核心之间负载是否均衡。  
 
 
 ### iostat
@@ -69,7 +70,8 @@ title: Linux系统性能剖析工具（一）
 	Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
 	sda               0.00         0.00         0.00          0          0
 	sdb               0.00         0.00         0.00          0          0
-iostat主要用来检查系统输入输出设备的使用状态，比如磁盘的tps, transaction per second等。如果我们在一个终端执行**“dd bs=1014 count=1024k if=/dev/zero of=/tmp/tmp.bin”**，同时在另外一个终端上面执行命令iostat 1，那么可以看到sda上面的kB_wrtn/s急剧上涨。
+
+iostat主要用来检查系统输入输出设备的使用状态，比如磁盘的tps, transaction per second等。如果我们在一个终端执行**“dd bs=1014 count=1024k if=/dev/zero of=/tmp/tmp.bin”**，同时在另外一个终端上面执行命令iostat 1，那么可以看到sda上面的kB_wrtn/s急剧上涨。  
 
 	b20yang@ubuntu$ iostat 1
 	avg-cpu:  %user   %nice %system %iowait  %steal   %idle
@@ -85,6 +87,7 @@ iostat主要用来检查系统输入输出设备的使用状态，比如磁盘�
 	sda              61.00         4.00     68312.00          4      68312
 
 ### vmstat
+
 	b20yang@ubuntu$ vmstat 1
 	procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 	 r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
@@ -92,7 +95,8 @@ iostat主要用来检查系统输入输出设备的使用状态，比如磁盘�
 	 0  0 613484 1236068 382688 750232    0    0     0     0   64  178  0  0 100  0  0
 	 0  0 613480 1236068 382688 750232   12    0    12     0   61  158  1  0 100  0  0
 	 0  0 613480 1236068 382688 750232    0    0     0     0   52  126  0  1 100  0  0
-vmstat主要用来检查系统内存，交换分区、磁盘块设备等状态。类似的，也可以看看命令**“dd bs=1014 count=1024k if=/dev/zero of=/tmp/tmp.bin”**是如何影响vmstat的。
+
+vmstat主要用来检查系统内存，交换分区、磁盘块设备等状态。类似的，也可以看看命令**“dd bs=1014 count=1024k if=/dev/zero of=/tmp/tmp.bin”**是如何影响vmstat的。  
 
 	b20yang@ubuntu$ vmstat 1
 	procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
