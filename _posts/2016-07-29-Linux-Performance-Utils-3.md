@@ -3,7 +3,7 @@ layout: post
 title: Linux系统性能剖析工具（三）
 ---
 
-前面[（一）](http://yangbiao.info/2016/07/20/Linux-Performance-Utils-1)、[（二）](http://yangbiao.info/2016/07/27/Linux-Performance-Utils-2) 两篇文章分别介绍了一些基本的剖析工具，此篇中将会介绍一个更加强大的工具——perf。perf不仅可以统计软件层面的追踪点（tracepoint）——如系统调用调度等，还可以追踪统计系统的软硬件事件，如上下文切换（软件事件）、CPU迁移（软件事件）、缓存失效（硬件事件）等。perf中包含一系列的子命令，常用的有list，record，report，sched，top，下面通过例子列举一些基本用法。
+前面[（一）](http://yangbiao.info/2016/07/20/Linux-Performance-Utils-1)、[（二）](http://yangbiao.info/2016/07/27/Linux-Performance-Utils-2) 两篇文章分别介绍了一些基本的剖析工具，此篇中将会介绍一个更加强大的工具——perf。perf不仅可以统计软件层面的追踪点，如系统调用调度等，还可以追踪统计系统的软硬件事件，如上下文切换（软件事件）、CPU迁移（软件事件）、缓存失效（硬件事件）等。perf中包含一系列的子命令，常用的有list，record，report，sched，top等，下面通过例子列举一些基本用法。
 
 ### perf sched
 
