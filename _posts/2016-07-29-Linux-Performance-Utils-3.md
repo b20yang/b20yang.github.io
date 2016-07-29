@@ -152,7 +152,7 @@ title: Linux系统性能剖析工具（三）
 
 然后在另外一个终端上，运行perf top得到如下输出： 
 	
-	perf top
+	b20yang@ubuntu$ sudo perf top
 	Samples: 1K of event 'cycles', Event count (approx.): 874746664
 	Overhead  Shared Object                 Symbol
 	  50.95%  a.out                         [.] loop
@@ -202,8 +202,9 @@ title: Linux系统性能剖析工具（三）
 上面输出结果的左侧信息是表示这些指令运行时间占该函数总运行事件的比例。  
 
 ### perf report
-还是上面C语言的例子，先用record命令“perf record -g ./a.out”记录统计目标文件执行的事件统计数据，然后再用“perf report”分析结果。
-perf report -g flat  
+还是上面C语言的例子，先用record命令“perf record -g ./a.out”记录统计目标文件执行的事件统计数据，然后再用“perf report”分析结果。  
+
+	b20yang@ubuntu$ sudo perf report -g flat  
 
 	Samples: 1K of event 'cycles', Event count (approx.): 876982948, Thread: a.out(19784)
 	  Children      Self  Comma  Shared Object      Symbol                                                                                                                                   ◆
