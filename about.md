@@ -3,13 +3,9 @@ layout: page
 title: About
 permalink: /about/
 ---
+### 关于我
+杭州，80后，IT男。
 
-Some information about you!
+### 关于这里
+目的：记录，表达。
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
