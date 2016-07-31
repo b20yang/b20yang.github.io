@@ -3,7 +3,7 @@ layout: post
 title: Linux系统性能剖析工具（四）
 ---
 
-前面[（一）](http://yangbiao.info/2016/07/20/Linux-Performance-Utils-1)、[（二）](http://yangbiao.info/2016/07/27/Linux-Performance-Utils-2)、[（三）](http://yangbiao.info/2016/07/20/Linux-Performance-Utils-3)分别介绍了如何剖析系统CPU、内存、磁盘等性能的工具，主要关注点在单个计算机内部；而在接下来的这篇文章中，会将我们的视野伸向更加广阔的互联网络，介绍一些剖析网络性能相关的工具，包括ping，netstat，tcpdump，iftop，nethogs等。  
+前面[（一）](http://yangbiao.info/2016/07/20/Linux-Performance-Utils-1)、[（二）](http://yangbiao.info/2016/07/27/Linux-Performance-Utils-2)、[（三）](http://yangbiao.info/2016/07/29/Linux-Performance-Utils-3)分别介绍了如何剖析系统CPU、内存、磁盘等性能的工具，主要关注点在单个计算机内部；而在接下来的这篇文章中，会将我们的视野伸向更加广阔的互联网络，介绍一些剖析网络性能相关的工具，包括ping，netstat，tcpdump，iftop，nethogs等。  
 
  
 ### ping
