@@ -94,7 +94,7 @@ netstat可以查看系统当前所有网络连接的状态、路由表及性能�
 
 再来看一个例子。对先前主机147端的ping命令加上“-p"选项，可以把ping包的内容都填充为0xff，请求端的命令是这样的：“ping -p ff 10.140.163.156”；然后在接收端156的主机上，执行命令“tcpdump -n -X -i eth0 icmp”:
 
-	b20yang@b20yang:~$ sudo tcpdump -nX -i eth0 icmp
+	b20yang@ubtunu$ sudo tcpdump -nX -i eth0 icmp
 	tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 	listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 	02:08:45.515524 IP 10.141.115.147 > 10.140.163.156: ICMP echo request, id 1, seq 39510, length 64
