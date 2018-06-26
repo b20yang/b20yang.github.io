@@ -162,7 +162,10 @@ netstat可以查看系统当前所有网络连接的状态、路由表及性能�
 	tcpdump -i eth0 -A port 8080
 
 	// -XX, prints the dump in hex and ascii formant
-	tcpdump -i eht0 -XX port 8080
+	tcpdump -i eth0 -XX port 8080
+	
+	//ip[offset], filter by IP payload, similar for ethernet and tcp..
+	tcpdump -i eth0 'ip[20] = 0x12 and ip[24:2] = 0x1234' -X
 
 ### iftop
 iftop是一个类top的工具，通过它可以很方便地看到各对端主机对系统网卡的使用排名。
